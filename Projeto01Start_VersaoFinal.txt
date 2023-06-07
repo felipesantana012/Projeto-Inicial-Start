@@ -1,0 +1,296 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
+ */
+package projetoteste02;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+/**
+ *
+ * @author felipe
+ */
+public class ProjetoTeste02 {
+
+  
+    public static void main(String[] args) {
+       
+      
+        
+         Scanner t = new Scanner (System.in);
+      
+       //------------------------------ Arrays----------------------------------        
+         List<Integer> listaComprasParafuso = new ArrayList<>();
+         List<Integer> listaComprasMartelo = new ArrayList<>();
+         List<Integer> listaComprasPrego = new ArrayList<>();
+         
+         List<Integer> listaVendasParafuso = new ArrayList<>();
+         List<Integer> listaVendasMartelo = new ArrayList<>();
+         List<Integer> listaVendasPrego = new ArrayList<>();
+     
+    //------------------------------ Variaveis----------------------------------      
+        int qntTotal = 0;
+        int qntInicial =0;
+        int qntCompra = 0;
+        int qntVenda = 0;
+        
+        int quantidadeCompras = 0;
+        int quantidadeVendas =0;
+
+        int parafusoQuantidadeVendas = 0;
+        int marteloQuantidadeVendas = 0;
+        int pregoQuantidadeVendas = 0;
+        
+        int parafusoQuantidadeCompras = 0;
+        int marteloQuantidadeCompras = 0;
+        int pregoQuantidadeCompras = 0;
+        
+        int parafusoInicio = 0;
+        int marteloInicio = 0;
+        int pregoInicio = 0;
+        
+        int parafusoFinal = 0;
+        int marteloFinal = 0;
+        int pregoFinal = 0;
+        
+        String nomePeca = "";
+        boolean a = false;     
+        boolean b= false;
+        int opcao ;
+        
+        System.out.println("Deseja iniciar o Sistema ? ( S ) ou ( N )");
+        String inicio = t.nextLine();
+        if("S".equals(inicio) || "s".equals(inicio)){
+            a=true;
+        }else{
+            b=false;
+            a=false;
+            System.out.println("Sistema Encerrado");
+        }
+        
+        while(a){
+     //-------------------Escolhendo a peca para iniciar------------------------
+     
+            quantidadeVendas =0; //precisei iniciar com 0 aqui , para nao somar o total das pecas.
+            quantidadeCompras = 0;
+            
+            System.out.println("---------------------------------------------");
+            System.out.println("Escolha o produto desejado abaixo : ");
+            System.out.println("( 1 ) Para Parafusos ");
+            System.out.println("( 2 ) Para Martelos ");
+            System.out.println("( 3 ) Para Pregos ");
+            System.out.println("( 0 ) Para Sair ");
+            System.out.println("---------------------------------------------");
+            int x = t.nextInt();
+            
+      //-----------------Verificaçao para iniciar o progama--------------------- 
+         switch (x) {
+                    case 1 -> { nomePeca="Parafuso";
+                    System.out.print("Infome a quantidade inicial do estoque de " + nomePeca + "  : ");
+                    qntInicial = t.nextInt();
+                    if(qntInicial>0){
+                    qntTotal = qntInicial;
+                    b=true;
+                    a=false; }
+                    else {
+                    b=false;
+              System.out.println("Quandidade de pecas invalida");
+         }}
+                     case 2 -> { nomePeca="Martelo";
+                     System.out.print("Infome a quantidade inicial do estoque de " + nomePeca + "  : ");
+                    qntInicial = t.nextInt();
+                    if(qntInicial>0){
+                    qntTotal = qntInicial;
+                    b=true;
+                    a=false;}
+                    else {
+                    b=false;
+              System.out.println("Quandidade de pecas invalida");
+         }}
+                     case 3 -> {nomePeca="Prego";
+                    System.out.print("Infome a quantidade inicial do estoque de " + nomePeca + "  : ");
+                    qntInicial = t.nextInt();
+                    if(qntInicial>0){
+                    qntTotal = qntInicial;
+                    b=true;
+                    a=false;}
+                    else {
+                    b=false;
+             System.out.println("Quandidade de pecas invalida");
+         }}
+                     case 0 -> {
+                    a=false; b=false;
+                    System.out.println("Sistema Encerrado");
+                    }
+                    
+                    default ->{
+                     System.out.println("Opcao invalida");
+                        b=false;
+                        a=true;
+                    }}
+                    
+        //-------------------Inicio do progama escolher acao--------------------
+        while(b){
+            System.out.println("---------------------------------------------");
+            System.out.println("Escolha a Acao que deseja Fazer : ");
+            System.out.println("( 1 ) Para Comprar " + nomePeca);
+            System.out.println("( 2 ) Para Vender " + nomePeca);
+            System.out.println("( 0 ) Para Voltar ");
+            opcao = t.nextInt();
+            
+                switch (opcao) {
+                    
+                    case 1 -> {
+                    System.out.print("Informe a quantidade de "+ nomePeca +" que deseja comprar : ");
+                    qntCompra = t.nextInt();
+                    if(qntCompra>0){
+                        if(x==1){
+                            listaComprasParafuso.add(qntCompra);
+                        }
+                        if(x==2){
+                            listaComprasMartelo.add(qntCompra);
+                        }
+                        if(x==3){
+                            listaComprasPrego.add(qntCompra);
+                        }
+                    qntTotal += qntCompra;
+                    System.out.println("Compra realizada com sucesso");
+                    System.out.println("Saldo atual de " + nomePeca + " : " + qntTotal + " pecas");
+                    quantidadeCompras ++;
+                         }else {
+                            System.out.println("Compras apartir de 1 " + nomePeca);
+                        }}
+                    
+                    case 2 -> {
+                        System.out.print("Infome a quantidade de "+nomePeca+" que voce deseja vender : ");
+                        qntVenda = t.nextInt();
+                        if(qntVenda <= qntTotal){
+                            if(x==1){
+                                listaVendasParafuso.add(qntVenda);
+                            }
+                             if(x==2){
+                                listaVendasMartelo.add(qntVenda);
+                            }
+                              if(x==3){
+                                listaVendasPrego.add(qntVenda);
+                            }
+                            qntTotal -= qntVenda;
+                            System.out.println("Venda realizada com sucesso");
+                            System.out.println("Saldo atual de " +nomePeca + " : " + qntTotal + " pecas");
+                            quantidadeVendas ++;
+                        }else {
+                            System.out.println("Saldo insuficiente para venda");
+                            System.out.println("Seu saldo continua de "+ qntTotal + " " + nomePeca );
+                        }}
+                    
+                    case 0 -> {
+                        System.out.println("Voltando Sistema");
+                     switch (nomePeca) {
+                                case "Parafuso" -> {
+                                    parafusoInicio = qntInicial;
+                                    parafusoFinal = qntTotal;
+                                    parafusoQuantidadeCompras = quantidadeCompras;
+                                    parafusoQuantidadeVendas =  quantidadeVendas;
+                                       a=true; b=false;
+                                }
+                                case "Martelo" -> {
+                                    marteloInicio = qntInicial;
+                                    marteloFinal = qntTotal;
+                                    marteloQuantidadeCompras = quantidadeCompras;
+                                    marteloQuantidadeVendas =  quantidadeVendas;
+                                       a=true; b=false;
+                                }
+                                case "Prego" -> {
+                                    pregoInicio = qntInicial;
+                                    pregoFinal = qntTotal;
+                                    pregoQuantidadeCompras = quantidadeCompras;
+                                    pregoQuantidadeVendas =  quantidadeVendas;
+                                       a=true; b=false;
+                                }
+                                default -> {
+                                    System.out.println("Error");
+                                    
+                                }}}
+                    default -> System.out.println("Opcao invalida, selecione a opcao correta");
+                }}}
+        
+        //--------------------Imprimindo resultado finais-----------------------
+        
+        System.out.println(" ");
+        System.out.println("-----------------PARAFUSOS------------------");
+        System.out.println("Saldo inicial de Parafusos no Estoque : " + parafusoInicio);
+        System.out.println("Total de Compras realizadas : " +parafusoQuantidadeCompras);
+        int cParafuso=0;
+       for(int i = 0; i<listaComprasParafuso.size(); i++){
+          cParafuso += listaComprasParafuso.get(i);
+            System.out.println("Compra " + (i+1) + " foi na quantidade de : " + listaComprasParafuso.get(i));
+       }
+        System.out.println("Total de Vendas relizadas : " + parafusoQuantidadeVendas );
+        int vParafuso=0;
+         for(int i = 0; i<listaVendasParafuso.size(); i++){
+             vParafuso +=listaVendasParafuso.get(i);
+            System.out.println("Venda " + (i+1) + " foi na quantidade de : " + listaVendasParafuso.get(i));
+       }
+        System.out.println("Saldo final de Parafusos no Estoque : " + parafusoFinal);
+        
+    //..................................................................................
+        
+        System.out.println(" ");
+        System.out.println("-----------------MARTELOS------------------");
+        System.out.println("Saldo inicial de Martelo no Estoque : " + marteloInicio );
+        System.out.println("Total de Compras realizadas : " +marteloQuantidadeCompras );
+        int cMartelo =0;
+        for(int i = 0; i<listaComprasMartelo.size(); i++){
+             cMartelo += listaComprasMartelo.get(i);
+            System.out.println("Compra " + (i+1) + " foi na quantidade de : " + listaComprasMartelo.get(i));
+            }
+        System.out.println("Total de Vendas relizadas : " + marteloQuantidadeVendas );
+        int vMartelo =0;
+         for(int i = 0; i<listaVendasMartelo.size(); i++){
+             vMartelo += listaVendasMartelo.get(i);
+            System.out.println("Venda "  + (i+1) + " foi na quantidade de : " + listaVendasMartelo.get(i));
+            }
+        System.out.println("Saldo final de Martelos no Estoque : " + marteloFinal);
+          
+      //..................................................................................  
+      
+        System.out.println(" ");
+        System.out.println("-----------------PREGOS------------------");
+        System.out.println("Saldo inicial de Pregos no estoque : " + pregoInicio );
+        System.out.println("Total de Compras realizadas : " +pregoQuantidadeCompras );
+        int cPrego=0;
+        for(int i = 0; i<listaComprasPrego.size(); i++){
+            cPrego +=listaComprasPrego.get(i);
+        System.out.println("Compra " + (i+1) + " foi na quantidade de : " + listaComprasPrego.get(i));
+            }
+        System.out.println("Total de Vendas relizadas : " + pregoQuantidadeVendas );
+        int vPrego=0;
+        for(int i = 0; i<listaVendasPrego.size(); i++){
+            vPrego+=listaVendasPrego.get(i);
+            System.out.println("Venda " + (i+1) + " foi na quantidade de : " + listaVendasPrego.get(i));
+            }
+        System.out.println("Saldo final de Pregos no Estoque : " + pregoFinal);
+  
+      //................................valores totais.......................................    
+        int totalInicio = parafusoInicio + marteloInicio + pregoInicio;
+        int comprasTotal = parafusoQuantidadeCompras + marteloQuantidadeCompras + pregoQuantidadeCompras;
+        int vendasTotal = parafusoQuantidadeVendas + marteloQuantidadeVendas + pregoQuantidadeVendas ;
+        int cTotal = cParafuso + cMartelo + cPrego;
+        int vTotal = vParafuso + vMartelo + vPrego;
+        int finalTotal = parafusoFinal + marteloFinal + pregoFinal;
+        
+        System.out.println(" ");
+        System.out.println("---------------STATUS FINAL TOTAL-------------");
+        System.out.println("Saldo inicial de pecas no estoque : " + totalInicio);
+        System.out.println("Quantidade de compras realizadas : " + comprasTotal );
+        System.out.println("Saldo total em Compras : " + cTotal);
+        System.out.println("Quantidade de vendas realizadas : " + vendasTotal );
+        System.out.println("Saldo total em Vendas : " + vTotal);
+        System.out.println("Saldo Final das pecas no estoque:  " + finalTotal);
+        
+      
+  
+ 
+}}

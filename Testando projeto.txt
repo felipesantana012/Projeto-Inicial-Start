@@ -1,0 +1,18 @@
+
+Realizacoes de testes no projeto
+
+1 - digite alguma letra diferente de ( S ou s).
+
+2 - escolha uma opcao que não seja a descrita nas opcoes de escolha do produto .
+
+3 - infome uma quantidade inicial de peça menor que 0.
+
+4 - escolha uma opcao que nao seja descrita nas opcoes de escolha da acao.
+
+5 - informe uma quantidade de compra que seja menor que 0.
+
+6 - informe uma quantidade de venda que seja maior que o valor que voce tem no estoque.
+
+7- ao encerrar verifique se os valores estao corretos .
+
+
